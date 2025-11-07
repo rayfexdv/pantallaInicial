@@ -1,0 +1,59 @@
+body{
+    background-color: rgb(167, 213, 254); /* Este es el contenido que se revela */
+    min-height: 100vh;
+    margin: 0;
+}
+
+#mascara{
+    /* 1. Cambios para que sea una superposición real */
+    position: fixed; /* Clave: Fija la máscara sobre todo el contenido */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Asegura que esté por encima del 'main' */
+
+    background-color: black; /* El color de tu pantalla de carga */
+    height: 100vh;
+    width: 100vw;
+
+    /* --- 2. El CAMBIO DE MÁSCARA --- */
+
+    /* Capa 1: Un gradiente sólido que cubre todo */
+    /* Capa 2: Tu logo SVG */
+    mask-image: linear-gradient(white, white), url(./octocat-fill-svgrepo-com.svg);
+
+    /* 'subtract' resta la Capa 2 (logo) de la Capa 1 (sólido) */
+    /* Esto crea el "agujero" */
+    mask-composite: subtract;
+    /* Para compatibilidad con Safari/WebKit */
+    /* -webkit-mask-composite: destination-out;  */
+
+    /* 'auto' aplica al gradiente, '50px' aplica al logo */
+    mask-size: auto, 50px; 
+
+    mask-position: center, center 50%;
+    mask-repeat: no-repeat;
+}
+
+#mascara.cargada{
+    animation: carga 10s forwards ease-in-out;
+}
+
+@keyframes carga {
+    0% {
+        /* Animamos el tamaño de la segunda máscara (el logo) */
+        mask-size: auto, 50px;
+        opacity: 1;
+    }
+    95% {
+        /* El "agujero" (logo) crece hasta llenar la pantalla */
+        mask-size: auto, 1000vh;
+        opacity: 1;
+    }
+    100%{
+        /* El agujero es gigante, y ahora ocultamos toda la máscara */
+        mask-size: auto, 1000vh;
+        opacity: 0;
+        /* Importante: oculta el elemento para poder hacer clic en el 'main' */
+        /* visibility: hidden;  */
+    }
+}
