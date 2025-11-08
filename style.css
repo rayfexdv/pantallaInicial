@@ -35,7 +35,7 @@ body{
 }
 
 #mascara.cargada{
-    animation: carga 10s forwards ease-in-out;
+    animation: carga 2s forwards ease-in-out;
 }
 
 @keyframes carga {
@@ -56,4 +56,5 @@ body{
         /* Importante: oculta el elemento para poder hacer clic en el 'main' */
         /* visibility: hidden;  */
     }
+
 }
