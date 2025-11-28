@@ -2,6 +2,7 @@ body{
     background-color: rgb(167, 213, 254); /* Este es el contenido que se revela */
     min-height: 100vh;
     margin: 0;
+    /* ACA agregamos otro comentario */
 }
 
 #mascara{
