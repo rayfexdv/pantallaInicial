@@ -44,6 +44,7 @@ body{
         /* Animamos el tamaño de la segunda máscara (el logo) */
         mask-size: auto, 50px;
         opacity: 1;
+        z-index: 100;
     }
     95% {
         /* El "agujero" (logo) crece hasta llenar la pantalla */
@@ -54,8 +55,10 @@ body{
         /* El agujero es gigante, y ahora ocultamos toda la máscara */
         mask-size: auto, 1000vh;
         opacity: 0;
+        z-index: -1;
         /* Importante: oculta el elemento para poder hacer clic en el 'main' */
         /* visibility: hidden;  */
     }
 
 }
+
